@@ -1,0 +1,4 @@
+#+TITLE: gbejoy's .emacs
+#+AUTHOR: Gokul Bejoy
+
+Contains my [[https://jwiegley.github.io/use-package/][use-package]] based configuration. Won't be too much crazy for now.
