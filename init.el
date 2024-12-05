@@ -7,6 +7,12 @@
 (package-initialize)
 
 ;;; Packages
+;;;; corfu
+;; In buffer autocomplete
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode))
 
 ;;;; emacs
 
