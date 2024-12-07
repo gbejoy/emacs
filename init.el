@@ -12,7 +12,7 @@
 (use-package emacs
   :config
   (set-frame-font "Source Code Pro-12" nil t)
-  (load-theme 'leuven t)
+  (load-theme 'tsdh-light t)
   :custom
   (backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
   (user-full-name "Gokul Bejoy")
