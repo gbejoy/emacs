@@ -15,6 +15,8 @@
   (load-theme 'tsdh-light t)
   :custom
   (backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+  ;; Always download from GNU and NonGNU if possible
+  ;;  (use-package-always-pin "nongnu")
   (user-full-name "Gokul Bejoy")
   (user-mail-address "imgokulbejoy@gmail.com"))
 
