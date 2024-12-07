@@ -7,6 +7,7 @@
 (package-initialize)
 
 ;;; Packages
+
 ;;;; emacs
 ;; Make changes to key parts of emacs itself
 (use-package emacs
@@ -14,6 +15,7 @@
   (set-frame-font "Source Code Pro-12" nil t)
   (load-theme 'tsdh-light t)
   :custom
+  ;; Set directory for backup files
   (backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
   ;; Always download from GNU and NonGNU if possible
   ;;  (use-package-always-pin "nongnu")
