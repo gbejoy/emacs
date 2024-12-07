@@ -38,7 +38,9 @@
 (use-package org
   :custom
   (org-directory "~/Documents/org/")
-  (org-default-notes-file (concat org-directory "inbox.org")))
+  (org-default-notes-file (concat org-directory "inbox.org"))
+  (org-agenda-files '("~/Documents/org/todo.org"
+		      "~/Documents/org/inbox.org")))
 
 ;;;;; org-agenda
 ;; Settings for agenda view
