@@ -45,7 +45,18 @@
 ;;;;; org-agenda
 ;; Settings for agenda view
 (use-package org-agenda
-  :bind ("C-c a" . org-agenda))
+  :bind ("C-c o a" . org-agenda))
+
+;;;;; org-capture
+;; Immediately jot down information as soon as possible
+(use-package org-capture
+  :bind ("C-c o c" . org-capture)
+  :config
+  (setq org-capture-templates
+	'(("t" "Todo" entry (file "~/Documents/org/todo.org")
+	   "* TODO %?\n %i\n")
+	  ("i" "Inbox" entry (file "~/Documents/org/inbox.org")
+	   "* %?\n %i\n"))))
 
 ;;;; pdf-tools
 ;; Read pdf within emacs using poppler
