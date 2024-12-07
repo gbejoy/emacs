@@ -17,6 +17,8 @@
   (backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
   ;; Always download from GNU and NonGNU if possible
   ;;  (use-package-always-pin "nongnu")
+  ;; Use y-or-n everywhere
+  (use-short-answers t)
   (user-full-name "Gokul Bejoy")
   (user-mail-address "imgokulbejoy@gmail.com"))
 
