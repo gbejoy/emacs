@@ -65,3 +65,10 @@
   :magic ("%PDF" . pdf-view-mode)
   :config
   (pdf-tools-install :no-query))
+
+;;;; which-key
+;; Shows available keybinds after pressing one character
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode))
