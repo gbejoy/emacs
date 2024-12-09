@@ -81,6 +81,20 @@
 	   (file+olp "~/Documents/gtd/media.org" "Books" "Non-fiction")
 	   "* TODO %^{Title} %^{Author}p %^{Country}p %^{Year}p %?"))))
 
+;;;;; org-clock
+;; All clock settings goes here
+(use-package org-clock
+  :custom
+  (org-clock-sound t))
+
+;;;;; org-roam
+;; Zettelkaisen for emacs
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory "~/Documents/roam/"))
+  
+
 ;;;; pdf-tools
 ;; Read pdf within emacs using poppler
 (use-package pdf-tools
