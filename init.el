@@ -38,11 +38,12 @@
 ;;;; org
 ;; For notetaking, scheduling and many more
 (use-package org
+  :config
   :custom
-  (org-directory "~/Documents/org/")
+  (org-directory "~/Documents/gtd/")
   (org-default-notes-file (concat org-directory "inbox.org"))
-  (org-agenda-files '("~/Documents/org/todo.org"
-		      "~/Documents/org/inbox.org")))
+  (org-agenda-files (list org-directory))
+  (org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "KILL(k)"))))
 
 ;;;;; org-agenda
 ;; Settings for agenda view
@@ -55,10 +56,6 @@
   :bind ("C-c o c" . org-capture)
   :config
   (setq org-capture-templates
-	'(("t" "Todo" entry (file "~/Documents/org/todo.org")
-	   "* TODO %?\n %i\n")
-	  ("i" "Inbox" entry (file "~/Documents/org/inbox.org")
-	   "* %?\n %i\n"))))
 	'(("i" "Inbox" entry
 	 (file "~/Documents/gtd/inbox.org")
 	  "* %?\n %i\n")
