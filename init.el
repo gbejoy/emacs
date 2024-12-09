@@ -59,6 +59,27 @@
 	   "* TODO %?\n %i\n")
 	  ("i" "Inbox" entry (file "~/Documents/org/inbox.org")
 	   "* %?\n %i\n"))))
+	'(("i" "Inbox" entry
+	 (file "~/Documents/gtd/inbox.org")
+	  "* %?\n %i\n")
+	  ("t" "Tasks" entry
+	   (file+headline "~/Documents/gtd/inbox.org" "Tasks")
+	   "* TODO %?\n")
+	  ("m" "Media")
+	  ("mm" "Movies" entry
+	   (file+headline "~/Documents/gtd/media.org" "Movies")
+	   "* TODO %^{Title} %^{Director}p %^{Writer}p %^{Actors}p
+  %^{DOP}p %^{Editor}p %^{Music}p %^{Year}p %^{Country}p %^{Language}p %?")
+	  ("mu" "Music" entry
+	   (file+headline "~/Documents/gtd/media.org" "Music")
+	   "* TODO %^{Title} %^{Artist}p ^{Genre}p ^{Country}p ^{Year}p %?")
+	  ("mb" "Books")
+	  ("mbf" "Fiction" entry
+	   (file+olp "~/Documents/gtd/media.org" "Books" "Fiction")
+	   "* TODO %^{Title} ^{Author}p %^{Country}p %^{Year}p %?")
+	  ("mbn" "Non-Fiction" entry
+	   (file+olp "~/Documents/gtd/media.org" "Books" "Non-fiction")
+	   "* TODO %^{Title} %^{Author}p %^{Country}p %^{Year}p %?"))))
 
 ;;;; pdf-tools
 ;; Read pdf within emacs using poppler
