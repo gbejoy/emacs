@@ -1,0 +1,236 @@
+#+TITLE: Emacs Configuration
+#+AUTHOR: Gokul Bejoy
+
+* Backup file
+Put all backup files in a separate directory so that they don't clutter up
+
+#+begin_src emacs-lisp
+  (setq backup-directory-alist '(("." . "~/.local/share/emacs/backups"))
+	backup-by-copying t
+	delete-old-versions t
+	kept-new-versions 6
+	kept-old-versions 2
+	version-control t)
+#+end_src
+
+* Custom file
+Put all config written by customize in a separate file in the
+user-emacs-directory.
+
+#+begin_src emacs-lisp
+  (setq custom-file (locate-user-emacs-file "custom.el"))
+  (load custom-file :no-error-if-file-is-missing)
+#+end_src
+
+* Package management
+
+** Add MELPA
+[[https://melpa.org][MELPA]] hosts some packages that I use frequently. Following code adds
+it to the package list.
+
+#+begin_src emacs-lisp
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (package-initialize)
+#+end_src
+
+** Setup use-package
+John Wiegley's [[https://github.com/jwiegley/use-package][use-package]] is somewhat of a macro that helps managing
+packages a lot easier with easier defering of packages. From version
+29, it is a built-in package. This code installs the package if it is
+an older version.
+
+#+begin_src emacs-lisp
+  (when (< emacs-major-version 29)
+    (unless (package-installed-p 'use-package)
+      (unless package-archive-contents
+	(package-refresh-contents))
+      (package-install 'use-package)))
+#+end_src
+
+Now always install the package by default if not available since it
+helps me avoid writing ":ensure t" everywhere.
+
+#+begin_src emacs-lisp
+  (setq use-package-always-ensure t)
+#+end_src
+
+* Appearance
+
+** Fonts
+
+Sets monospaced and proportional fonts for emacs.
+
+#+begin_src emacs-lisp
+  (let ((mono-spaced-font "Source Code Pro")
+	(proportionately-spaced-font "Inter"))
+    (set-face-attribute 'default nil
+			:family mono-spaced-font
+			:height 140)
+    (set-face-attribute 'fixed-pitch nil
+			:family mono-spaced-font
+			:height 1.0)
+    (set-face-attribute 'variable-pitch nil
+			:family
+			proportionately-spaced-font
+			:height 1.0))
+#+end_src
+
+** Theme
+
+#+begin_src emacs-lisp
+  (use-package ef-themes
+    :ensure t
+    :config
+    (load-theme 'ef-light :no-confirm-loading))
+#+end_src
+
+* Misc
+
+** Always use y-or-n-p
+Use y or n everywhere instead of yes or no
+
+#+begin_src emacs-lisp
+  (setopt use-short-answers t)
+#+end_src
+
+** User details
+Set details about the user like name, mail, etc
+
+#+begin_src emacs-lisp
+  (setq user-full-name "Gokul Bejoy")
+  (setq user-mail-address "imgokulbejoy@gmail.com")
+#+end_src
+
+
+* Packages
+
+** corfu
+In-buffer completion.
+
+#+begin_src emacs-lisp
+  (use-package corfu
+    :init
+    (global-corfu-mode)
+    :bind (:map corfu-map ("<tab>" . corfu-complete))
+    :config
+    (setq tab-always-indent 'complete)
+    (setq corfu-min-width 20)
+    (setq corfu-popupinfo-delay '(1.25 . 0.5))
+    (corfu-popupinfo-mode 1))
+#+end_src
+
+** dired
+Emacs file manager
+
+#+begin_src emacs-lisp
+  (use-package dired
+    :ensure nil
+    :commands (dired)
+    :hook
+    ((dired-mode . dired-hide-details-mode)
+     (dired-mode . hl-line-mode))
+    :config
+    (setq dired-recursive-copies 'always)
+    (setq dired-recursive-deletes 'always)
+    (setq delete-by-moving-to-trash t)
+    (setq dired-dwim-target t))
+#+end_src
+
+** dired-subtree
+Gives sneakpeek into directory contents
+
+#+begin_src emacs-lisp
+  (use-package dired-subtree
+    :after dired
+    :bind
+    ( :map dired-mode-map
+      ("<tab>" . dired-subtree-toggle)
+      ("TAB" . dired-subtree-toggle)
+      ("<backtab>" . dired-subtree-remove)
+      ("S-TAB" . dired-subtree-remove))
+    :config
+    (setq dired-subtree-use-backgrounds nil))
+#+end_src
+
+** magit
+Greatest git interface that shows all options available better than
+git-cli.
+
+#+begin_src emacs-lisp
+  (use-package magit)
+#+end_src
+
+** marginalia
+Adds useful descriptions about completion candidates.
+
+#+begin_src emacs-lisp
+  (use-package marginalia
+    :init
+    (marginalia-mode))
+#+end_src
+
+** orderless
+Matches completion styles irrespective of order of each strings. Each
+string is separated by a space.
+
+#+begin_src emacs-lisp
+  (use-package orderless
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-defaults nil)
+    (completion-category-overrides '((file (styles partial-completion)))))
+#+end_src
+
+** pdf-tools
+PDF reader in emacs using poppler library
+
+#+begin_src emacs-lisp
+  (use-package pdf-tools
+    :ensure t
+    :magic ("%PDF" . pdf-view-mode)
+    :config
+    (pdf-tools-install :no-query))
+#+end_src
+
+** savehist
+Saves user-inputs and displays last used choices on top.
+
+#+begin_src emacs-lisp
+  (use-package savehist
+    :ensure nil
+    :init
+    (savehist-mode))
+#+end_src
+
+** trashed
+Trash can management
+
+#+begin_src emacs-lisp
+  (use-package trashed
+    :commands (trashed)
+    :config
+    (setq trashed-use-header-line t)
+    (setq trashed-sort-key '("Date deleted" . t))
+    (setq trashed-date-format "%Y-%m-%d %H:%M:%S"))
+#+end_src
+
+** vertico
+Vertical minibuffer completion package.
+
+#+begin_src emacs-lisp
+  (use-package vertico
+    :ensure t
+    :init
+    (vertico-mode))
+#+end_src
+
+** which-key
+Shows available keybinds while performing an operation.
+
+#+begin_src emacs-lisp
+  (use-package which-key
+    :ensure t
+    :init
+    (which-key-mode))
+#+end_src
