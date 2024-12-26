@@ -158,6 +158,10 @@ Feed reader for emacs
 
 #+begin_src emacs-lisp
   (use-package elfeed)
+  (use-package elfeed
+    :bind
+    ("C-c f h" . elfeed))
+#+end_src
 #+end_src
 
 ** magit
