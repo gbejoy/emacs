@@ -153,6 +153,13 @@ Gives sneakpeek into directory contents
     (setq dired-subtree-use-backgrounds nil))
 #+end_src
 
+** elfeed
+Feed reader for emacs
+
+#+begin_src emacs-lisp
+  (use-package elfeed)
+#+end_src
+
 ** magit
 Greatest git interface that shows all options available better than
 git-cli.
