@@ -162,6 +162,11 @@ Feed reader for emacs
     :bind
     ("C-c f h" . elfeed))
 #+end_src
+
+Here contains a list of feeds I subscribe to
+#+begin_src emacs-lisp
+  (setq elfeed-feeds
+	'(("https://planet.emacslife.com/atom.xml" emacs blog)))
 #+end_src
 
 ** magit
