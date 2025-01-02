@@ -212,6 +212,35 @@ string is separated by a space.
     (completion-category-overrides '((file (styles partial-completion)))))
 #+end_src
 
+** org
+Markup system that magically manages all aspects of my life. It is
+built-in by default
+
+#+begin_src emacs-lisp
+  (use-package org
+    :ensure nil
+    :custom
+    (org-babel-load-languages
+     '((emacs-lisp . t)
+       (C . t)
+       (cpp . t)
+       (calc . t)
+       (java . t)
+       (kotlin . t)
+       (python . t)
+       (ruby . t)
+       (shell . t)
+       (sql . t)
+       (sqlite . t))))
+#+end_src
+
+*** ob-kotlin
+Adds Kotlin support for org-babel
+
+#+begin_src emacs-lisp
+  (use-package ob-kotlin)
+#+end_src
+
 ** pdf-tools
 PDF reader in emacs using poppler library
 
