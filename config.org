@@ -162,10 +162,25 @@ Feed reader for emacs
     ("C-c f v" . elfeed))
 #+end_src
 
+
 Here contains a list of feeds I subscribe to
 #+begin_src emacs-lisp
   (setq elfeed-feeds
-	'(("https://planet.emacslife.com/atom.xml" emacs blog)))
+	'(("https://krebsonsecurity.com/feed/" tech security)
+	  ("https://lobste.rs/rss" tech programming dev)
+	  ("https://hnrss.github.io/frontpage" tech programming dev career)
+	  ("https://www.slowernews.com/rss.xml" global essays)
+	  ("https://planet.emacslife.com/atom.xml" emacs blog)
+	  ("https://lwn.net/headlines/rss" linux news)
+	  ("https://hackernoon.com/feed" tech programming dev career science)
+	  ("https://www.reddit.com/r/linux/.rss" reddit linux)
+	  ("https://rss.slashdot.org/Slashdot/slashdotMain" tech news science)
+	  ("https://www.phoronix.com/rss.php" linux hardware)
+	  ("https://liliputing.com/feed" hardware mobile linux pc)
+	  ("https://www.technologyreview.com/feed/" tech science academic)
+	  ("https://www.reddit.com/r/malayalammovies/.rss" reddit movies)
+	  ("https://www.reddit.com/r/kollywood/.rss" reddit movies)
+	  ("https://www.reddit.com/r/emacs/.rss" reddit emacs)))
 #+end_src
 
 ** magit
