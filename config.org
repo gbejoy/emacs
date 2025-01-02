@@ -159,7 +159,7 @@ Feed reader for emacs
 #+begin_src emacs-lisp
   (use-package elfeed
     :bind
-    ("C-c f h" . elfeed))
+    ("C-c f v" . elfeed))
 #+end_src
 
 Here contains a list of feeds I subscribe to
