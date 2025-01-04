@@ -48,6 +48,8 @@ an older version.
       (package-install 'use-package)))
 #+end_src
 
+#+RESULTS:
+
 Now always install the package by default if not available since it
 helps me avoid writing ":ensure t" everywhere.
 
@@ -213,33 +215,17 @@ string is separated by a space.
 #+end_src
 
 ** org
-Markup system that magically manages all aspects of my life. It is
-built-in by default
+Dynamic note-taking format
 
 #+begin_src emacs-lisp
   (use-package org
     :ensure nil
     :custom
-    (org-babel-load-languages
-     '((emacs-lisp . t)
-       (C . t)
-       (cpp . t)
-       (calc . t)
-       (java . t)
-       (kotlin . t)
-       (python . t)
-       (ruby . t)
-       (shell . t)
-       (sql . t)
-       (sqlite . t))))
+    (org-directory "~/Documents/org/")
+    (org-agenda-files (list "inbox.org")))
 #+end_src
 
-*** ob-kotlin
-Adds Kotlin support for org-babel
-
-#+begin_src emacs-lisp
-  (use-package ob-kotlin)
-#+end_src
+#+RESULTS:
 
 ** pdf-tools
 PDF reader in emacs using poppler library
