@@ -315,3 +315,22 @@ Shows available keybinds while performing an operation.
     :init
     (which-key-mode))
 #+end_src
+
+* Programming
+
+** [[https://clojure.org][Clojure]]
+
+*** clojure-mode
+Minor-mode for clojure
+
+#+begin_src emacs-lisp
+  (use-package clojure-mode)
+#+end_src
+
+*** CIDER
+Interactively program in clojure
+
+#+begin_src emacs-lisp
+  (use-package cider)
+#+end_src
+
