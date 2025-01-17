@@ -219,13 +219,49 @@ Dynamic note-taking format
 
 #+begin_src emacs-lisp
   (use-package org
+    :bind
+    (("C-c o a" . org-agenda)
+     ("C-c o c" . org-capture))
     :ensure nil
     :custom
     (org-directory "~/Documents/org/")
-    (org-agenda-files (list "inbox.org")))
+    (org-agenda-files (list "todo.org")))
 #+end_src
 
 #+RESULTS:
+: org-capture
+
+*** org-capture
+Capture ideas quickly from anywhere
+
+#+begin_src emacs-lisp
+    (use-package org-capture
+      :ensure nil
+      :config
+      (setq org-capture-templates
+	    '(("i" "Inbox" entry (file "inbox.org")
+	       "* %?\n Entered on %U")
+	      ("t" "Tasks")
+	      ("tn" "Todo now" entry (file "todo.org")
+	       "* TODO %?\n")
+	      ("td" "Todo within DEADLINE" entry (file "todo.org")
+	       "* TODO %?\nDEADLINE: %^{Deadline}t")
+	      ("ts" "Todo on SCHEDULE" entry (file "todo.org")
+	       "* TODO %?\nSCHEDULED: %^{Scheduled}t")
+	      ("tt" "Todo today" entry (file "todo.org")
+	       "* TODO %?\nDEADLINE: %U")
+	      ("j" "Journal" entry (file+datetree "journal.org")
+	       "* %^{Entry title}\nEntered on %U\n %?\n %i")
+	      ("p" "Project")
+	      ("pc" "Project Create" entry (file "todo.org")
+	       "* %^{Project Name}\n* %i?\n")
+	      ("pa" "Project Add" entry (file+headline "todo.org" "%^{headline}")
+	       "* %i?\n"))))
+#+end_src
+
+#+RESULTS:
+: t
+
 
 ** pdf-tools
 PDF reader in emacs using poppler library
