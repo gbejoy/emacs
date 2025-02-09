@@ -281,28 +281,33 @@ Dynamic note-taking format
 Capture ideas quickly from anywhere
 
 #+begin_src emacs-lisp
-    (use-package org-capture
-      :ensure nil
-      :config
-      (setq org-capture-templates
-	    '(("i" "Inbox" entry (file "inbox.org")
-	       "* %?\n Entered on %U")
-	      ("t" "Tasks")
-	      ("tn" "Todo now" entry (file "todo.org")
-	       "* TODO %?\n")
-	      ("td" "Todo within DEADLINE" entry (file "todo.org")
-	       "* TODO %?\nDEADLINE: %^{Deadline}t")
-	      ("ts" "Todo on SCHEDULE" entry (file "todo.org")
-	       "* TODO %?\nSCHEDULED: %^{Scheduled}t")
-	      ("tt" "Todo today" entry (file "todo.org")
-	       "* TODO %?\nDEADLINE: %U")
-	      ("j" "Journal" entry (file+datetree "journal.org")
-	       "* %^{Entry title}\nEntered on %U\n %?\n %i")
-	      ("p" "Project")
-	      ("pc" "Project Create" entry (file "todo.org")
-	       "* %^{Project Name}\n* %i?\n")
-	      ("pa" "Project Add" entry (file+headline "todo.org" "%^{headline}")
-	       "* %i?\n"))))
+  (use-package org-capture
+    :ensure nil
+    :config
+    (setq org-capture-templates
+	  '(("i" "Inbox" entry (file "inbox.org")
+	     "* %?\n Entered on %U")
+	    ("m" "Media")
+	    ("mf" "Films" entry (file+headline "media.org" "Film")
+	     "* %^{Title} (%^{Year})\t%^g\n%^{Language}p%^{Rating}p\n%?")
+	    ("mm" "Music" entry (file+headline "media.org" "Music")
+	     "* %^{Title} - %^{Album Artist} (%^{Year})\t%^g\n%^{Country}p%^{Language}p%^{Rating}p\n%?")
+	    ("t" "Tasks")
+	    ("tn" "Todo now" entry (file "todo.org")
+	     "* TODO %?\n")
+	    ("td" "Todo within DEADLINE" entry (file "todo.org")
+	     "* TODO %?\nDEADLINE: %^{Deadline}t")
+	    ("ts" "Todo on SCHEDULE" entry (file "todo.org")
+	     "* TODO %?\nSCHEDULED: %^{Scheduled}t")
+	    ("tt" "Todo today" entry (file "todo.org")
+	     "* TODO %?\nDEADLINE: %U")
+	    ("j" "Journal" entry (file+datetree "journal.org")
+	     "* %^{Entry title}\nEntered on %U\n %?\n %i")
+	    ("p" "Project")
+	    ("pc" "Project Create" entry (file "todo.org")
+	     "* %^{Project Name}\n* %i?\n")
+	    ("pa" "Project Add" entry (file+headline "todo.org" "%^{headline}")
+	     "* %i?\n"))))
 #+end_src
 
 #+RESULTS:
