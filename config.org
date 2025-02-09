@@ -385,3 +385,21 @@ Interactively program in clojure
   (use-package cider)
 #+end_src
 
+** Guile
+
+*** geiser
+REPL-Driven-Development package
+
+#+begin_src emacs-lisp
+  (use-package geiser)
+#+end_src
+
+**** geiser-guile
+Add Guile support to geiser
+
+#+begin_src emacs-lisp
+  (use-package geiser-guile
+    :custom
+    (geiser-guile-binary "guile3.0"))
+#+end_src
+
