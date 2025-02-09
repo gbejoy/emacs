@@ -185,6 +185,24 @@ Here contains a list of feeds I subscribe to
 	  ("https://www.reddit.com/r/emacs/.rss" reddit emacs)))
 #+end_src
 
+** gptel
+Interface to LLM models
+
+#+begin_src emacs-lisp
+  (use-package gptel)
+#+end_src
+
+#+begin_src emacs-lisp
+  (gptel-make-openai "llama.cpp"
+		     :stream t
+		     :protocol "http"
+		     :host "localhost:8000"
+		     :models '(test))
+#+end_src
+
+#+RESULTS:
+: #s(gptel-openai "llama.cpp" "localhost:8000" #<subr F616e6f6e796d6f75732d6c616d626461_anonymous_lambda_18> "http" t "/v1/chat/completions" nil (test) "http://localhost:8000/v1/chat/completions" nil nil)
+
 ** magit
 Greatest git interface that shows all options available better than
 git-cli.
