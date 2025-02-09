@@ -212,6 +212,13 @@ Japanese wiki for efficient notetaking.
 
 #+RESULTS:
 
+** ledger-mode
+Major mode for editing ledger files
+#+begin_src emacs-lisp
+  (use-package ledger-mode
+    :mode "\\.dat\\'")
+#+end_src
+
 ** magit
 Greatest git interface that shows all options available better than
 git-cli.
