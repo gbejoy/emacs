@@ -335,6 +335,20 @@ Saves user-inputs and displays last used choices on top.
     (savehist-mode))
 #+end_src
 
+** smudge
+Control spotify from emacs
+#+begin_src emacs-lisp
+  (use-package smudge
+    :bind-keymap ("C-c ." . smudge-command-map)
+    :custom
+    (smudge-oauth2-client-secret "a166c5d8cc4f42adafe96fa5ad123191")
+    (smudge-oauth2-client-id "e9fc5725014d4c84b4642e43c356c4b4")
+    ;; optional: enable transient map for frequent commands
+    (smudge-player-use-transient-map t)
+    :config
+    ;; optional: display current song in mode line
+    (global-smudge-remote-mode))
+#+end_src
 ** trashed
 Trash can management
 
@@ -402,4 +416,37 @@ Add Guile support to geiser
     :custom
     (geiser-guile-binary "guile3.0"))
 #+end_src
+
+** Misc
+
+*** eglot
+LSP client for emacs
+
+#+begin_src emacs-lisp
+  (use-package eglot
+    :hook
+    (python-mode . eglot-ensure))
+#+end_src
+
+
+*** markdown-mode
+Major mode for editing markdown
+
+#+begin_src emacs-lisp
+  (use-package markdown-mode)
+#+end_src
+*** paredit
+Easier editing of parenthesis in Lisp family languages
+
+#+begin_src emacs-lisp
+  (use-package paredit)
+#+end_src
+
+
+
+
+
+
+
+
 
