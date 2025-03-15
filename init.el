@@ -35,4 +35,6 @@
   :custom
   (completion-preview-minimum-symbol-length 2))
 
-
+;; Magit
+(use-package magit
+  :ensure t)
